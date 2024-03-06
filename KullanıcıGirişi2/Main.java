@@ -2,61 +2,38 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String userName, password, select,newPassword;
-        ;
+        //değişkenleri tanımlayalım
+        int mat, fizik, kimya, biyoloji, müzik;
 
-        Scanner input = new Scanner(System.in);
-// şifre ve kullanıcı adını alıyoruz
+        //kullanıcıdan veri alalım
+        Scanner kong = new Scanner(System.in);
+        System.out.print("mat notunuz : ");
+        mat = kong.nextInt();
 
-        System.out.print("Kullanıcı Adını Giriniz: ");
-        userName = input.nextLine();
-        System.out.print("Kullacı Şifrenizi Giriniz: ");
-        password = input.nextLine();
 
-// tüm bilgiler dogruysa hatasız giriş.
+        System.out.print("fizik notunuz : ");
+        fizik = kong.nextInt();
 
-        if (userName.equals("patika") && password.equals("java123")) {
-            System.out.print("Giriş Başarılı !!");
+        System.out.print("kimya notunuz : ");
+        kimya = kong.nextInt();
 
-// tüm bigilerin yanlış oldugu kombinasyon
+        System.out.print("biyoloji notunuz : ");
+        biyoloji = kong.nextInt();
 
-        } else if(!(userName.equals("patika")) && !(password.equals("java123"))){
-            System.out.print("Hatalı Giriş .Kullanıcı adı ve şifre yanlıştır!! Lütfen bilgileri kontrol edip tekrar deneyiniz.");
+        System.out.print("müzik notunuz : ");
+        müzik = kong.nextInt();
+        if (mat<0||mat>100||fizik<0 || fizik>100|| kimya>0||kimya<100||biyoloji<0||biyoloji>100||müzik>0||müzik>100){
+            System.out.println("Yanlış giriş yaptınız.0-100 arası değerler giriniz");
+        }else {
 
-//sadece kullanıcı adının yanlış oldugu kombinasıyon
 
-        } else if (!(userName.equals("patika")) && (password.equals("java123"))) {
-            System.out.print("Kullanıcı adı hatalı lütfen Kullanıcı adını kontrol edip tekrar deneyiniz.");
+            double ortalama = (mat + fizik + kimya + biyoloji + müzik) / 5;
 
-// sadece parolanın yanlış oldugu kombinasyon ve kullanıcıdan şifreyi değiştirmek isteyim istemedigini ögreniyoruz ve seçim yaptırıyoruz.
-
-        } else if(userName.equals("patika") && !(password.equals("java123"))) {
-            System.out.println("Hatalı Şifre!!!");
-            System.out.println("Şifrenizi unuttuysanız adımları takip edin\n Yeni şifre oluşturmak için : 'E' .\n Yeni Şifre oluşturmaktan vazgeçmek ve giriş ekranından ayrılmak için:'H'.");
-            System.out.print(" Seçiminiz: ");
-            select = input.nextLine();
-
-// yaptıgı seçime göre yönlendiriyoruz.
-
-            if (select.equals("E") || select.equals("e") ){
-                System.out.print("Yeni şifre giriniz .(Lütfen daha önceki şifrelerinizden farklı bir şifre oluşturunuz:");
-                newPassword = input.nextLine();
-                // şifre başarılı şekilde değiştirilirse
-
-                if (!newPassword.equals("java123")){
-                    System.out.print("Yeni şifreniz başarı ile oluşturuldu.");
-                    // şifre hatalı şekilde değiştirilmeye çalışılırsa
-                }else {
-                    System.out.print("Hatalı deneme!! Yeni şifre eskisiyle aynı olamaz. Tekrar Deneyiniz");
-                }
-                // kullanınıcı şifre degiştirmek istemzse
-            } else if (select.equals("H") || select.equals("h")) {
-                System.out.print("kullanıcı giriş sayfanda ayrılıyorsunuz ... iyi günler .");
-                // kullanıcı E ve H dışında hatalı tercih yaparsa
-            }else {
-                System.out.print("Hatalı giriş yaptınız!! Lütfen sadece 'E ve H' seçeneklerinden birini giriniz.");
-            }
+            if (ortalama <= 55) {
+                System.out.println("Sınıfı geçemediniz.Seneye görüşürüz");
+            } else
+                System.out.println("Sınıfı geçtiniz");
+            System.out.println("Ortalamanız : " + ortalama);
         }
-
     }
 }
